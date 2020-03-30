@@ -11,8 +11,8 @@ class ProductModal extends React.Component {
 
             Product_Name: '',
             Product_Category: '',
-            Price: 0,
-            Jar_Size: 0,
+            Price: "",
+            Jar_Size: "",
             Description: '',
             Link_Img: ''
         };
@@ -63,14 +63,27 @@ class ProductModal extends React.Component {
             Link_Img: e.target.value
         })
     }
-
+    preview_image = (event) => {
+        {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('image_upload');
+                output.src = reader.result;
+               
+            }
+            reader.readAsDataURL(event.target.files[0]);
+           console.log(event.target.files[0]); 
+          
+       
+        }
+    }
 
 
     addproduct = () => {
-        if (this.state.Product_Name !== '' && (this.state.Product_Category !== '' || this.state.Price !== '' || this.state.Jar_Size !== '' || this.state.Description !== '' || this.state.Link_Img !== '')) {
-            axios.post("http://localhost:4000/add_product", {
-                Product_Name: this.state.Product_Name, Product_Category: this.state.Product_Category, Price: this.state.Price, Jar_Size: this.state.Jar_Size, Link_Img: this.state.Link_Img
+        if ([this.state.placeholder]!=='' ) {
+            axios.post("http://localhost:4000/add_product", {Product_Name: this.state.Product_Name, Product_Category: this.state.Product_Category, Price: this.state.Price, Jar_Size: this.state.Jar_Size,Description:this.state.Description,Link_Img: this.state.Link_Img.replace('C:\\fakepath\\','img/')
             })
+            this.toggle()
         }
         else { alert('Please fill all required fields!') }
     }
@@ -88,17 +101,26 @@ class ProductModal extends React.Component {
                     <ModalBody className="productForm">
 
                         <span>Product Name</span>
-                        <input placeholder="Add product name" onChange={this.setName}></input>
+                        <input placeholder="Add product name"  value={this.state.Product_Name}onChange={this.setName}></input>
                         <span>Category</span>
-                        <input placeholder="Add category" onChange={this.setCategory}></input>
+                        <input placeholder="Add category" value={this.state.Product_Category} onChange={this.setCategory}></input>
                         <span>Product Price</span>
-                        <input placeholder="Add price" onChange={this.setPrice}></input>
+                        <input placeholder="Add price"value={this.state.Price} onChange={this.setPrice}></input>
                         <span>Jar Size</span>
-                        <input placeholder="Add jar size" onChange={this.setJar_Size}></input>
+                        <input placeholder="Add jar size" value={this.state.Jar_Size}onChange={this.setJar_Size}></input>
                         <span>Image Link</span>
-                        <input placeholder="Add product image" onChange={this.setLink_Img}></input>
+                        <div className="fileupload-new thumbnail" >
+                                            <img id='image_upload' alt="" style={{ width: "200px", height: " 150px" }} />
+                         </div>
+                                        <div class="form-group">
+                                           
+                                            <span className="btn btn-theme02 btn-file">
+                                                <input type="file" class="default" name="img" value={this.state. Link_Img} accept="image/*" onInput={this.preview_image} onChange={(e) => { this.setState( { Link_Img:e.target.value})}} />
+                                            </span>
+
+                                        </div>
                         <span>Product description</span>
-                        <input placeholder="Add product description" onChange={this.setDescription}></input>
+                        <input placeholder="Add product description" value={this.state.Description} onChange={this.setDescription}></input>
 
 
                     </ModalBody>

@@ -5,7 +5,7 @@ module.exports = (app) => {
 
     app.get("/find_product/:id", Product.FindID);
 
-    app.get("/find_products/", Product.FindAll);
+    app.get("/find_products", Product.FindAll);
 
     app.put('/update_product/:id', Product.Update)
 

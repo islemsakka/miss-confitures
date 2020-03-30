@@ -11,9 +11,9 @@ class Navigbar extends Component {
         return (<Navbar className="navBar">
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
-                <Link to="/"><i class="fas fa-home"></i></Link>
-                <i class="far fa-comments"></i>
-                <i class="far fa-bell"></i>
+                <Link to="/"><i className="fas fa-home"></i></Link>
+                <i className="far fa-comments"></i>
+                <i className="far fa-bell"></i>
 
 
 

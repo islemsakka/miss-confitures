@@ -1,6 +1,6 @@
 const Product = require('../models/product.model');
 
-exports.create = (req, res) => {
+exports.create =(req, res) => {
     const NewProduct = new Product({
         Product_Name: req.body.Product_Name,
         Product_Category: req.body.Product_Category,
@@ -10,9 +10,10 @@ exports.create = (req, res) => {
         Link_Img: req.body.Link_Img
     });
     NewProduct.save().then((data, err) => {
-        if (err) console.log(err)
+        if (err) {console.log(err)}
         else res.send(data)
     })
+ 
 
 }
 
@@ -47,7 +48,7 @@ exports.Update = (req, res) => {
         Description: req.body.Description,
         Link_Img: req.body.Link_Img
     })
-        .then(Product => { res.send(Product) }).catch(err => {
+        .then(data => { res.send(data) }).catch(err => {
             console.log(err)
             res.status(500).json({
                 message: "error! "
@@ -67,14 +68,8 @@ exports.delete = (req, res) => {
 }
 
 exports.FindAll = (req, res) => {
-    Product.find()
-        .then(result =>
-            res.status(200).json((result)))
-        .catch(err => {
-            console.log(err)
-            res.status(500).json({
-                message: "Error Occured"
-            })
-
-        })
+    Product.find().then(result =>res.send(result)).catch(err => {
+        console.log(err)
+        res.status(500).json({ message: "ERROR!" })
+    })
 }
