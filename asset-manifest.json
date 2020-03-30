@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/miss-confitures/static/css/main.6a763266.chunk.css",
+    "main.js": "/miss-confitures/static/js/main.bd1e15ed.chunk.js",
+    "main.js.map": "/miss-confitures/static/js/main.bd1e15ed.chunk.js.map",
+    "runtime-main.js": "/miss-confitures/static/js/runtime-main.3bb63425.js",
+    "runtime-main.js.map": "/miss-confitures/static/js/runtime-main.3bb63425.js.map",
+    "static/css/2.de424728.chunk.css": "/miss-confitures/static/css/2.de424728.chunk.css",
+    "static/js/2.da51421b.chunk.js": "/miss-confitures/static/js/2.da51421b.chunk.js",
+    "static/js/2.da51421b.chunk.js.map": "/miss-confitures/static/js/2.da51421b.chunk.js.map",
+    "index.html": "/miss-confitures/index.html",
+    "precache-manifest.7df3b4b59161ae84618bdf5877d6a6a4.js": "/miss-confitures/precache-manifest.7df3b4b59161ae84618bdf5877d6a6a4.js",
+    "service-worker.js": "/miss-confitures/service-worker.js",
+    "static/css/2.de424728.chunk.css.map": "/miss-confitures/static/css/2.de424728.chunk.css.map",
+    "static/css/main.6a763266.chunk.css.map": "/miss-confitures/static/css/main.6a763266.chunk.css.map",
+    "static/js/2.da51421b.chunk.js.LICENSE.txt": "/miss-confitures/static/js/2.da51421b.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3bb63425.js",
+    "static/css/2.de424728.chunk.css",
+    "static/js/2.da51421b.chunk.js",
+    "static/css/main.6a763266.chunk.css",
+    "static/js/main.bd1e15ed.chunk.js"
+  ]
+}
