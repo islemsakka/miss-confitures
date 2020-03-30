@@ -7,10 +7,16 @@ class Gallery extends Component {
     }
     render() {
         return (<div>
-            This is gallery page
-            
+            <form action='/api/images' method="post" enctype="multipart/form-data">
+                <input type='file' name='image' />
+            </form>
+
         </div>);
     }
 }
 
 export default Gallery;
+
+
+
+/**<img src=imageURL /> */
