@@ -1,12 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors=require('cors')
 
 const multer = require("multer");
 const cloudinary = require("cloudinary");
 const cloudinaryStorage = require("multer-storage-cloudinary");
 
 const app = express();
-
+app.use(cors())
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
@@ -21,13 +22,9 @@ const storage = cloudinaryStorage({
 });
 const parser = multer({ storage: storage });
 
-
-
-
-
-
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json({ type: '*/*' }));
+
 
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
