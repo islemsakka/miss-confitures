@@ -22,6 +22,10 @@ const storage = cloudinaryStorage({
 });
 const parser = multer({ storage: storage });
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json({ type: '*/*' }));
 
