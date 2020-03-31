@@ -8,7 +8,6 @@ class ProductModal extends React.Component {
         this.state = {
             modal: props.initialModalState,
             fade: true,
-
             Product_Name: '',
             Product_Category: '',
             Price: "",
@@ -122,7 +121,7 @@ class ProductModal extends React.Component {
                         <span>Product description</span>
                         <input placeholder="Add product description" value={this.state.Description} onChange={this.setDescription}></input>
 
-
+{console.log(hello)}
                     </ModalBody>
                     <ModalFooter className="productFormBtns">
                         <Button color="primary" onClick={this.addproduct}>Add</Button>
