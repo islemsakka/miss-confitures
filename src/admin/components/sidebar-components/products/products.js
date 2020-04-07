@@ -12,7 +12,7 @@ class Products extends Component {
 
     componentDidMount() {
         console.log("Component did mount")
-        axios.get("http://localhost:4000/find_products").then(res=> {this.setState({ products: [...res.data]})
+        axios.get("http://localhost:4000/find_products").then(res=> {this.setState({ products: res.data})
                 console.log(this.state.products)
             })
     }
@@ -22,7 +22,7 @@ class Products extends Component {
     componentDidUpdate(PrevProps, PrevState) {
         if (PrevState.products.length !== this.state.products.length) {
             console.log("Component did update")
-            axios.get("http://localhost:4000/find_products/").then(res=> {this.setState({ products: [...res.data]})});
+            axios.get("http://localhost:4000/find_products/").then(res=> {this.setState({ products: res.data})});
         }
     }
     delete1 = (id) => {

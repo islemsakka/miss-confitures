@@ -5,29 +5,30 @@ const cors=require('cors')
 const multer = require("multer");
 const cloudinary = require("cloudinary");
 const cloudinaryStorage = require("multer-storage-cloudinary");
+const dbConfig = require('./config/database.config.js');
+const mongoose = require('mongoose');
 
 const app = express();
 app.use(cors())
 
-cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET
-});
-const storage = cloudinaryStorage({
-    cloudinary: cloudinary,
-    folder: "demo",
-    allowedFormats: ["jpg", "png"],
-    transformation: [{ width: 500, height: 500, crop: "limit" }]
-});
-const parser = multer({ storage: storage });
+// cloudinary.config({
+//     cloud_name: process.env.CLOUD_NAME,
+//     api_key: process.env.API_KEY,
+//     api_secret: process.env.API_SECRET
+// });
+// const storage = cloudinaryStorage({
+//     cloudinary: cloudinary,
+//     folder: "demo",
+//     allowedFormats: ["jpg", "png"],
+//     transformation: [{ width: 500, height: 500, crop: "limit" }]
+// });
+// const parser = multer({ storage: storage });
 
 app.use(bodyParser.urlencoded({ extended: true }))
-app.use(bodyParser.json({ type: '*/*' }));
+app.use(bodyParser.json());
+app.use(express.static('uploads'));
 
 
-const dbConfig = require('./config/database.config.js');
-const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 

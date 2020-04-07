@@ -14,7 +14,8 @@ class ProductModal extends React.Component {
             Price: "",
             Jar_Size: "",
             Description: '',
-            Link_Img: ''
+            Link_Img: '',
+            lien:""
         };
 
         this.toggle = this.toggle.bind(this);
@@ -64,7 +65,7 @@ class ProductModal extends React.Component {
         })
     }
     preview_image = (event) => {
-        {
+        { console.log(event.target.files[0]);
             var reader = new FileReader();
             reader.onload = function () {
                 var output = document.getElementById('image_upload');
@@ -72,20 +73,32 @@ class ProductModal extends React.Component {
                
             }
             reader.readAsDataURL(event.target.files[0]);
-           console.log(event.target.files[0]); 
-          
+           
+           this.setState({
+               lien:event.target.files[0]
+           })
+          console.log(this.state.lien)
        
         }
     }
 
 
     addproduct = () => {
-        if ([this.state.placeholder]!=='' ) {
-            axios.post("http://localhost:4000/add_product", {Product_Name: this.state.Product_Name, Product_Category: this.state.Product_Category, Price: this.state.Price, Jar_Size: this.state.Jar_Size,Description:this.state.Description,Link_Img: this.state.Link_Img.replace('C:\\fakepath\\','img/')
-            })
+       
+        let file=this.state.Link_Img;
+        let formdat= new FormData();
+        formdat.append('Link_Img',file)
+        formdat.append('Product_Name', this.state.Product_Name)
+        formdat.append('Product_Category',this.state.Product_Category) 
+        formdat.append('Price',this.state.Price)
+        formdat.append('Jar_Size',this.state.Jar_Size)
+        formdat.append('Description',this.state.Description)
+        
+console.log(this.state.Link_Img)
+            axios.post("http://localhost:4000/add_product",formdat)
             this.toggle()
-        }
-        else { alert('Please fill all required fields!') }
+       
+        // else { alert('Please fill all required fields!') }
     }
 
 
@@ -110,12 +123,12 @@ class ProductModal extends React.Component {
                         <input placeholder="Add jar size" value={this.state.Jar_Size}onChange={this.setJar_Size}></input>
                         <span>Image Link</span>
                         <div className="fileupload-new thumbnail" >
-                                            <img id='image_upload' alt="" style={{ width: "200px", height: " 150px" }} />
+                                            {/* <img id='image_upload' alt="" style={{ width: "200px", height: " 150px" }} /> */}
                          </div>
                                         <div class="form-group">
                                            
                                             <span className="btn btn-theme02 btn-file">
-                                                <input type="file" class="default" name="img" value={this.state. Link_Img} accept="image/*" onInput={this.preview_image} onChange={(e) => { this.setState( { Link_Img:e.target.value})}} />
+                                                <input type="file" id="file" name="img"  accept="image/*"  onChange={(e) =>  this.setState( { Link_Img:e.target.files[0]})} />
                                             </span>
 
                                         </div>
