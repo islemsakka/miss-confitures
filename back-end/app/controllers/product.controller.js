@@ -1,14 +1,14 @@
 const Product = require('../models/product.model');
 
 exports.create =(req, res) => {
-    console.log(req)
+   
     const NewProduct = new Product({
         Product_Name: req.body.Product_Name,
         Product_Category: req.body.Product_Category,
         Price: req.body.Price,
         Jar_Size: req.body.Jar_Size,
         Description: req.body.Description,
-        Link_Img: req.file.path
+        Link_Img: req.file.originalname
     });
     NewProduct.save().then((data, err) => {
         if (err) {console.log(err)}
@@ -47,7 +47,7 @@ exports.Update = (req, res) => {
         Price: req.body.Price,
         Jar_Size: req.body.Jar_Size,
         Description: req.body.Description,
-        Link_Img: req.file.path
+        Link_Img: req.file.originalname
     })
         .then(data => { res.send(data) }).catch(err => {
             console.log(err)

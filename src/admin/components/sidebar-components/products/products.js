@@ -85,7 +85,9 @@ class Products extends Component {
                    
                     <td >{el.Jar_Size}</td>
                     <td>{el.Description}</td>
-                    <td>{el.Link_Img}</td>
+                    {console.log(window.location.origin)}
+                    
+                    <td><img src={process.env.PUBLIC_URL +`/img/${el.Link_Img}`}/></td>
                    
                    
                    
